@@ -15,6 +15,13 @@ public class RoundScoreDAO {
     @Autowired
     private RoundScoreMapper roundScoreMapper;
 
+    /**
+     * 获得队伍某一轮次的分数
+     * @param roundId
+     * @param teamId
+     * @return
+     */
+
     public RoundScore getByRoundIdAndTeamId(Long roundId,Long teamId){
         return roundScoreMapper.getByRoundIdAndTeamId(roundId, teamId);
     }

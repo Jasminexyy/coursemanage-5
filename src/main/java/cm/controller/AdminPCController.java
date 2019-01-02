@@ -23,33 +23,29 @@ public class AdminPCController {
 
     @RequestMapping(value = "/login",method = RequestMethod.GET)
     public String adminLogin(){
-        return "admin_login";
+        return "pcLogin";
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    @ResponseBody
-    public ResponseEntity adminLoginSubmit(String account, String password) {
-        if (adminService.vertify(account, password))
-            return new ResponseEntity(HttpStatus.OK);
-        else
-            return new ResponseEntity(HttpStatus.UNAUTHORIZED);
-    }
-
-    @RequestMapping(value = "/index",method = RequestMethod.GET)
-    public String adminIndex(){
-        return "admin_index";
+    public String adminLoginSubmit(String account, String password) {
+        if (adminService.vertify(account, password)) {
+            return "admin_teacherList";
+        }
+        else {
+            return "redirect:/cm/pc/admin/login";
+        }
     }
 
     @RequestMapping(value = "/teacherList",method = RequestMethod.GET)
     public String adminTeacherList(Model model){
-        model.addAttribute("teacherList",teacherService.findAllTeachers());
+        model.addAttribute("TeacherList",teacherService.listAllTeacher());
         return "admin_teacherList";
     }
 
     @RequestMapping(value = "/teacherList/search",method = RequestMethod.GET)
     @ResponseBody
-    public Teacher adminTeacherSearch(String teacherID){
-        return teacherService.findTeacherByAccount(teacherID);
+    public Teacher adminTeacherSearch(String teacherAccount){
+        return teacherService.getTeacherByAccount(teacherAccount);
     }
 
     @RequestMapping(value = "/addTeacher",method = RequestMethod.GET)
@@ -67,21 +63,21 @@ public class AdminPCController {
     }
 
     @RequestMapping(value="/modifyTeacher",method = RequestMethod.GET)
-    public String adminModifyTeacher(String teacherId,Model model){
-        model.addAttribute("teacher",teacherService.findTeacherByAccount(teacherId));
+    public String adminModifyTeacher(String teacherAccount,Model model){
+        model.addAttribute("teacher",teacherService.getTeacherByAccount(teacherAccount));
         return "admin_modify_teacher";
     }
 
     @RequestMapping(value="/modifyTeacher",method=RequestMethod.PATCH)
     @ResponseBody
-    public ResponseEntity adminModifyTeacherSubmit(long id,String account,String teacherName,String email){
+    public ResponseEntity adminModifyTeacherSubmit(Long id,String account,String teacherName,String email){
         teacherService.modifyTeacher(id,account,teacherName,email);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/teacher/{id}",method = RequestMethod.DELETE)
     @ResponseBody
-    public ResponseEntity adminDeleteTeacher(@PathVariable long id){
+    public ResponseEntity adminDeleteTeacher(@PathVariable Long id){
         teacherService.deleteTeacher(id);
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -100,7 +96,7 @@ public class AdminPCController {
 
     @RequestMapping(value = "/modifyStudent",method = RequestMethod.PATCH)
     @ResponseBody
-    public ResponseEntity adminModifyStudentSubmit(long id,String account,String studentName,String email){
+    public ResponseEntity adminModifyStudentSubmit(Long id,String account,String studentName,String email){
         studentService.modifyStudent(id,account,studentName,email);
         return new ResponseEntity(HttpStatus.OK);
     }

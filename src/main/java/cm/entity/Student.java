@@ -14,8 +14,19 @@ public class Student {
     private Long id;
     private String account;
     private String password;
-    private Byte isActive=1;
+    private Byte isActive=0;
     private String studentName;
     private String email;
     List<Long>courseIdList;
+
+    public Student() {
+    }
+
+    public Student(Long id, String account, String studentName, String email) {
+        this.id = id;
+        this.account = account;
+        this.studentName = studentName;
+        this.email = email;
+    }
+
 }

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 public interface RoundScoreMapper {
     /**
      * 根据roundId和teamId获得RoundScore
+     *
      * @param roundId
      * @param teamId
      * @return cm.entity.RoundScore

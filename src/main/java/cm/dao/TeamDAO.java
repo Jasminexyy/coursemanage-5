@@ -30,8 +30,8 @@ public class TeamDAO {
     private TeamValidApplicationMapper teamValidApplicationMapper;
 
 
-    public Team getByKlassIdAndStudentId(Long klassId, Long studentID){
-        return teamMapper.getByKlassIdAndStudentId(klassId, studentID);
+    public Team getByKlassIdAndStudentId(Long klassId, Long studentId){
+        return teamMapper.getByKlassIdAndStudentId(klassId, studentId);
     }
 
     public List<Team> listByKlassId(Long classId){

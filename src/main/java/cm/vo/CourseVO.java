@@ -3,6 +3,7 @@ package cm.vo;
 import lombok.Data;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: Yunfeng Huang
@@ -18,5 +19,4 @@ public class CourseVO {
     private Boolean isShareSeminar;
 
     List<RoundVO> roundVOList;
-
 }

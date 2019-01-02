@@ -16,6 +16,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/cm/pc/teacher")
 public class TeacherPCController {
+    /*
     TeacherService teacherService=new TeacherService();
     CourseService courseService=new CourseService();
     KlassService klassService=new KlassService();
@@ -24,7 +25,7 @@ public class TeacherPCController {
 
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String teacherPCIndex(Model model){
-        long teacherID;
+        long teacherId;
         model.addAttribute("courseList",courseService.findCoursesByTeacherId());
         return "pc_teacher_index";
     }
@@ -89,4 +90,5 @@ public class TeacherPCController {
         model.addAttribute("scoreList",maps);
         return "pc_teacher_score";
     }
+    */
 }

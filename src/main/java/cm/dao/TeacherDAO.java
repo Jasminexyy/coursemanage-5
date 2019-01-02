@@ -71,7 +71,6 @@ public class TeacherDAO {
         return teacher;
     }
 
-
     public Teacher revertPassword(Long teacherId){
         if(teacherMapper.revertPassword(teacherId)==1){
             return teacherMapper.getByTeacherId(teacherId);
